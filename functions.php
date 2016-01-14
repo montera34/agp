@@ -1,4 +1,5 @@
 <?php
+
 //////
 // RIDGE FUNCTIONS REDEFINITION
 //////
@@ -61,3 +62,68 @@
 		echo $output;
 
 	} // ridge_post_meta
+
+/**
+ * Builds and prints the skill filter nav, hiding any skills without associated projects
+ *
+ * MODIF: if only one skill, then doesn't print anything
+ *
+ * @param str $post_type    Optional. Accepts project or post for use in the portfolio
+ *   and blog.
+ * @since 1.0
+ */
+	function ridge_filter_nav( $post_type = 'project', $skill_filter = null ) {
+
+		if( 'project' == $post_type )
+			$tax = 'skill';
+		else
+			$tax = 'category';
+
+		$args = array(
+			'taxonomy'   => $tax,
+			'orderby'    => 'slug',
+			'hide_empty' => 1
+		);
+
+		/** @var string $filter Comma-separated list of IDs for skill(s) when using filtered portfolio pages */
+		$filter = ridge_filtered_portfolio();
+
+		if( $filter ){
+
+			$filter = implode( ',', $filter);
+
+			$args = array(
+				'taxonomy'   => $tax,
+				'orderby'    => 'slug',
+				'include'    => $filter
+			);
+
+		}
+
+		$categories = get_categories( $args );
+
+		//Display FilterNav only if there is more than one skill
+
+		if( sizeof( $categories ) > 1 ) { ?>
+			<ul id="filter-nav" class="clearfix">
+				<li class="all-btn"><a href="#" data-filter="*" class="selected"><?php _e( 'All', 'ridge' ); ?></a></li>
+				<?php
+				foreach( $categories as $pcat ) {
+
+					$output = sprintf( '<li><a href="#" data-filter=".%1$s">%2$s</a></li>%3$s',
+							esc_attr( $pcat->slug ),
+							ucfirst( esc_attr( $pcat->name ) ),
+							"\n"
+						);
+
+					echo $output;
+
+				} // foreach
+
+				?>
+			</ul>
+		<?php
+		} // if
+
+	} // ridge_filter_nav
+

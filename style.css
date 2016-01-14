@@ -44,3 +44,9 @@ p {
 	line-height: 1.5em;
 }
 
+#projects .project.small figcaption .inner h2 {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	height: 0;
+}
