@@ -13,4 +13,34 @@ Tags: child theme
 
 @import url("../ridge/style.css");
 
+html { background-color: #fff; }
+body, input, select, textarea {
+	color: #666
+}
+.site-content,
+.content-area {
+	background-color:#fff;
+}
+footer.site-footer {
+	background: #FFFFFF none repeat scroll 0% 0%;
+}
+.site-header,
+#blog article,
+.entry-content {
+	box-shadow: none;
+}
+
+.site-title { font-size: 1.1em;}
+.main-navigation ul {font-size: 1.2rem; line-height: 1.1em;}
+footer.site-footer p { font-size: 0.9em;}
+.entry-header h1.entry-title, h2.entry-title, .page-header h1.page-title {
+	font-family: Lato,sans-serif;
+	font-size: 2rem;
+}
+p {
+	font-size: 1.1em;
+	font-weight: 300;
+	margin-bottom: 30px;
+	line-height: 1.5em;
+}
 
