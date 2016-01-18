@@ -1,4 +1,59 @@
 <?php
+// theme setup main function
+add_action( 'after_setup_theme', 'agp_theme_setup' );
+function agp_theme_setup() {
+
+	/* Load JavaScript files */
+	add_action( 'wp_print_scripts', 'elkartoki_load_frontend_scripts',100);
+
+} // END theme setup main function
+
+// load js scripts to avoid conflicts
+function elkartoki_load_frontend_scripts() {
+	wp_enqueue_script(
+		'agp-functions',
+		get_stylesheet_directory_uri().'/js/agp.js',
+		array( 'jquery' ),
+		'1.0',
+		true
+	);
+
+} // end load frontend js scripts to avoid conflicts
+
+/**
+ * Post navigation within single post views
+ *
+ * Based on ridge_post_nav function
+ *
+ * MODIF: Remove next and prev post titles
+ *
+ * @since 1.0
+ */
+
+if ( ! function_exists( 'agp_post_nav' ) ) :
+	// Display navigation to next/previous post when applicable.
+	function agp_post_nav() {
+		// Don't print empty markup if there's nowhere to navigate.
+		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+		$next     = get_adjacent_post( false, '', false );
+
+		if ( ! $next && ! $previous ) {
+			return;
+		}
+		?>
+		<nav class="navigation post-navigation" role="navigation">
+			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ridge' ); ?></h1>
+			<div class="nav-links">
+				<?php
+					next_post_link( '<div class="next-project"> %link</div>', '&#8594;',true,'','skill' );
+					previous_post_link( '<div class="prev-project">%link</div>', '&#8592;',true,'','skill' );
+				?>
+			</div><!-- .nav-links -->
+		</nav><!-- .navigation -->
+		<?php
+	}
+endif;
+
 
 //////
 // RIDGE FUNCTIONS REDEFINITION
@@ -126,4 +181,5 @@
 		} // if
 
 	} // ridge_filter_nav
+
 

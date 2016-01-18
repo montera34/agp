@@ -44,9 +44,82 @@ p {
 	line-height: 1.5em;
 }
 
+.single-project .entry-header h1.entry-title,
 #projects .project.small figcaption .inner h2 {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 	height: 0;
+	margin: 0;
+	padding: 0;
+}
+.single-project .entry-header {
+	margin: 0 !important;
+}
+.single-project .entry-content {
+	padding: 0px;
+	margin: 40px 50px 50px;
+	position: relative;
+}
+.single-project .entry-content .inner {
+	position: fixed;
+	left: 0;
+	bottom: 10px;
+	width: 250px;
+	margin: 0 30px;
+}
+.single-project .entry-content .entry-img {
+	text-align: center;
+	height: 100%;
+}
+.single-project .entry-content .entry-img img {
+	height: 100%;
+	width: auto;
+}
+.single-project .post-navigation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+.single-project .screen-reader-text {
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+.single-project .nav-links {
+	margin: 0 auto;
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+}
+.single-project .nav-links div {
+	width: 50%;
+}
+.single-project .nav-links div a {
+	padding: 0;
+	width: 100%;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.single-project .nav-links div a:hover {
+	background-color: rgba(0,0,0,0.1);
+	color: #fff;
+}
+.single-project .nav-links .next-project {
+	text-align: right;
+}
+.single-project .nav-links .next-project a {
+	/*cursor: e-resize;*/
+	cursor: url("images/arrow-right.png"),auto;
+}
+.single-project .nav-links .prev-project {
+	text-align: left;
+}
+.single-project .nav-links .prev-project a {
+	/*cursor: w-resize;*/
+	cursor: url("images/arrow-left.png"),auto;
 }
