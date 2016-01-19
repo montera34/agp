@@ -33,7 +33,6 @@
 		<div class="inner">
 
 			<?php
-
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
 				__( 'Continue reading %s', 'ridge' ),
@@ -45,6 +44,17 @@
 					<?php echo $manual_excerpt; ?>
 				</p>
 			<?php }
+			// go back buttons
+			$series = get_the_terms(get_the_ID(),'skill');
+				if ( count($series) >> 0 ) {
+					$s_out = "<span class='goback'>Volver a</span><ul class='filter-btns-small'><li><a href='".get_home_url()."'>Portada</a></li>";
+					foreach ( $series as $c ) {
+						$c_perma = get_term_link( $c->term_id,'skill' );
+						$s_out .= "<li><a title='Volver al mosaico de la serie' href='".$c_perma."'>".$c->name."</a></li>";
+					}
+					$s_out .= "</ul>";
+					echo $s_out;
+				}
 
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'ridge' ) . '</span>',

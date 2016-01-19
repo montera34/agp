@@ -34,7 +34,7 @@ get_header();
 				<?php // categories menu
 				$categories = get_categories();
 				if ( count($categories) >> 0 ) {
-					$c_out = "<ul id='filter-cat'>";
+					$c_out = "<ul class='filter-btns'>";
 					foreach ( $categories as $c ) {
 						$c_perma = get_category_link( $c->term_id );
 						$c_out .= "<li><a href='".$c_perma."'>".$c->name."</a></li>";
