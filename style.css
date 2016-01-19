@@ -153,3 +153,34 @@ p {
 	/*cursor: w-resize;*/
 	cursor: url("images/arrow-right.png"),auto;
 }
+
+/* categories filters nav */
+#filter-cat {
+	margin: 0;
+	text-align: center;
+	width: 100%;
+	position: relative;
+	list-style: outside none none !important;
+}
+#filter-cat li {
+	padding: 0px;
+	background: transparent none repeat scroll 0% 0%;
+	margin: 0px;
+	display: inline-block;
+	list-style: outside none none !important;
+}
+#filter-cat li a {
+	font-size: 14px;
+	display: inline-block;
+	color: #A5A5A5;
+	text-decoration: none;
+	position: relative;
+	cursor: pointer;
+	padding: 7px 11px !important;
+	border: medium none;
+	line-height: 1em;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	font-family: Lato,sans-serif;
+	font-weight: 500;
+}
