@@ -61,21 +61,48 @@ p {
 	margin: 40px 50px 50px;
 	position: relative;
 }
-.single-project .entry-content .inner {
-	position: fixed;
-	left: 0;
-	bottom: 10px;
-	width: 250px;
-	margin: 0 30px;
+
+
+@media screen and (max-width: 1024px) and (min-height: 401px) {
+	.single-project .entry-content .entry-img {
+		margin-bottom: 10px;
+	}
 }
-.single-project .entry-content .entry-img {
-	text-align: center;
-	height: 100%;
+@media screen and (min-width: 1025px) and (min-height: 401px) {
+	.single-project .entry-content .inner {
+		position: fixed;
+		left: 0;
+		bottom: 10px;
+		width: 250px;
+		margin: 0 30px;
+	}
+	.single-project .entry-content .entry-img {
+		text-align: center;
+		height: 100%;
+	}
+	.single-project .entry-content .entry-img img {
+		height: 100%;
+		width: auto;
+	}
 }
-.single-project .entry-content .entry-img img {
-	height: 100%;
-	width: auto;
+@media screen and (min-width: 1025px) and (max-height: 400px) {
+	.single-project .entry-content .inner {
+		margin: 0;
+	}
+	.single-project .entry-content .entry-img {
+		text-align: left;
+		float: left;
+		margin-right: 10px;
+		height: 100%;
+		position: relative;
+	}
+	.single-project .entry-content .entry-img img {
+		height: 100%;
+		width: auto;
+	}
+
 }
+
 .single-project .post-navigation {
 	position: absolute;
 	top: 0;
@@ -97,6 +124,7 @@ p {
 }
 .single-project .nav-links div {
 	width: 50%;
+	float: none;
 }
 .single-project .nav-links div a {
 	padding: 0;
@@ -111,15 +139,17 @@ p {
 }
 .single-project .nav-links .next-project {
 	text-align: right;
+	float: left;
 }
 .single-project .nav-links .next-project a {
 	/*cursor: e-resize;*/
-	cursor: url("images/arrow-right.png"),auto;
+	cursor: url("images/arrow-left.png"),auto;
 }
 .single-project .nav-links .prev-project {
 	text-align: left;
+	float: right;
 }
 .single-project .nav-links .prev-project a {
 	/*cursor: w-resize;*/
-	cursor: url("images/arrow-left.png"),auto;
+	cursor: url("images/arrow-right.png"),auto;
 }

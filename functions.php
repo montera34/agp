@@ -10,6 +10,14 @@ function agp_theme_setup() {
 
 // load js scripts to avoid conflicts
 function elkartoki_load_frontend_scripts() {
+	wp_dequeue_script('ridge-functions');
+	wp_enqueue_script(
+		'agp-ridge-functions',
+		get_stylesheet_directory_uri().'/js/theme_trust.js',
+		array( 'jquery' ),
+		'1.0',
+		true
+	);
 	wp_enqueue_script(
 		'agp-functions',
 		get_stylesheet_directory_uri().'/js/agp.js',
