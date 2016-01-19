@@ -6,6 +6,9 @@ function agp_theme_setup() {
 	/* Load JavaScript files */
 	add_action( 'wp_print_scripts', 'elkartoki_load_frontend_scripts',100);
 
+	// Adds new rewrite rules to Ridge parent theme existing ones
+	add_action('after_switch_theme', 'agp_custom_rewrite_rules');
+
 } // END theme setup main function
 
 // load js scripts to avoid conflicts
@@ -27,6 +30,31 @@ function elkartoki_load_frontend_scripts() {
 	);
 
 } // end load frontend js scripts to avoid conflicts
+
+// custom rewrite rules to add to existing post types and taxonomies
+function agp_custom_rewrite_rules() {
+
+	// First, try to load up the rewrite rules. We do this just in case
+	// the default permalink structure is being used.
+	if( ($current_rules = get_option('rewrite_rules')) ) {
+
+		// Next, iterate through each custom rule adding a new rule
+		// that replaces 'movies' with 'films' and give it a higher
+		// priority than the existing rule.
+		foreach($current_rules as $key => $val) {
+			if(strpos($key, 'skill') !== false) {
+				add_rewrite_rule(str_ireplace('skill', 'serie', $key), $val, 'top');   
+			} elseif(strpos($key, 'project') !== false) {
+				add_rewrite_rule(str_ireplace('project', 'obra', $key), $val, 'top');   
+			} // end if
+		} // end foreach
+
+	} // end if/else
+
+	// ...and we flush the rules
+	flush_rewrite_rules();
+
+} // end add_custom_rewrite_rule
 
 /**
  * Post navigation within single post views
