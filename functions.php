@@ -120,7 +120,7 @@ endif;
 
 			}
 
-			$category_string = 'in ' . trim( $output, $separator );
+			$category_string = '| ' . trim( $output, $separator );
 
 		} else {
 
@@ -137,12 +137,13 @@ endif;
 
 		$time_string = sprintf( $time_string,
 			esc_attr( get_the_date( 'c' ) ),
-			get_the_date( 'M j \<\s\u\p\>S\<\/\s\u\p\> Y' ),
+			//get_the_date( 'M j \<\s\u\p\>S\<\/\s\u\p\> Y' ),
+			get_the_date(),
 			esc_attr( get_the_modified_date( 'c' ) ),
 			esc_html( get_the_modified_date() )
 		);
 
-		$output = sprintf( __( 'On %1$s %2$s<br /> ', 'ridge' ),
+		$output = sprintf( __( '%1$s %2$s<br /> ', 'ridge' ),
 			sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
 				esc_url( get_permalink() ),
 				$time_string

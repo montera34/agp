@@ -44,6 +44,10 @@ p {
 	line-height: 1.5em;
 }
 
+.single-post .entry-footer {
+	text-align: center;
+}
+
 .single-project .entry-header h1.entry-title,
 #projects .project.small figcaption .inner h2 {
 	text-indent: 100%;
