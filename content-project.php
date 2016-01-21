@@ -32,29 +32,35 @@
 		</div>
 		<div class="inner">
 
+			<div class="entry-description">
 			<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
 				__( 'Continue reading %s', 'ridge' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
-			) );
-			$manual_excerpt = $post->post_excerpt;
+			) ); ?>
+			</div>
+			<?php $manual_excerpt = $post->post_excerpt;
 			if( $manual_excerpt ) { ?>
 				<p class="entry-excerpt">
 					<?php echo $manual_excerpt; ?>
 				</p>
 			<?php }
-			// go back buttons
+
+			// prev/next and go back buttons
+			$nav_prev = get_previous_post_link( '<li class="filter-prev">%link</li>', 'Prev',true,'','skill' );
+			$nav_next = get_next_post_link( '<li class="filter-next"> %link</li>', 'Next',true,'','skill' );
+			$s_out = "<div class='filter-container'><ul class='filters filter-btns-nobg'>".$nav_prev." / ".$nav_next."</ul>";
+			$s_out .= "<ul class='filters filter-btns-small'><li><a href='".get_home_url()."'>Home</a></li>";
 			$series = get_the_terms(get_the_ID(),'skill');
-				if ( count($series) >> 0 ) {
-					$s_out = "<span class='goback'>Volver a</span><ul class='filter-btns-small'><li><a href='".get_home_url()."'>Portada</a></li>";
-					foreach ( $series as $c ) {
-						$c_perma = get_term_link( $c->term_id,'skill' );
-						$s_out .= "<li><a title='Volver al mosaico de la serie' href='".$c_perma."'>".$c->name."</a></li>";
-					}
-					$s_out .= "</ul>";
-					echo $s_out;
+			if ( count($series) >> 0 ) {
+				foreach ( $series as $c ) {
+					$c_perma = get_term_link( $c->term_id,'skill' );
+					$s_out .= "<li><a title='Volver al mosaico de la serie' href='".$c_perma."'>".$c->name."</a></li>";
 				}
+			}
+			$s_out .= "</ul></div>";
+			echo $s_out;
 
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'ridge' ) . '</span>',
