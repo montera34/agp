@@ -48,8 +48,8 @@
 			<?php }
 
 			// prev/next and go back buttons
-			$nav_prev = get_previous_post_link( '<li class="filter-prev">%link</li>', 'Prev',true,'','skill' );
-			$nav_next = get_next_post_link( '<li class="filter-next"> %link</li>', 'Next',true,'','skill' );
+			$nav_next = get_previous_post_link( '<li class="filter-next">%link</li>', 'Next',true,'','skill' );
+			$nav_prev = get_next_post_link( '<li class="filter-prev"> %link</li>', 'Prev',true,'','skill' );
 			$s_out = "<div class='filter-container'><ul class='filters filter-btns-nobg'>".$nav_prev." / ".$nav_next."</ul>";
 			$s_out .= "<ul class='filters filter-btns-small'><li><a href='".get_home_url()."'>Home</a></li>";
 			$series = get_the_terms(get_the_ID(),'skill');

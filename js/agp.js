@@ -1,7 +1,7 @@
 var container = ".single-project .entry-content";
 
 function setContainerHeight(tarjet) {
-	var newHeight = jQuery(window).height() - 50;
+	var newHeight = jQuery(window).height() - 80;
 	jQuery(tarjet).css( "height", newHeight );
 }
 
