@@ -48,9 +48,28 @@
 			<?php }
 
 			// prev/next and go back buttons
-			$nav_next = get_previous_post_link( '<li class="filter-next">%link</li>', 'Next',true,'','skill' );
-			$nav_prev = get_next_post_link( '<li class="filter-prev"> %link</li>', 'Prev',true,'','skill' );
-			$s_out = "<div class='filter-container'><ul class='filters filter-btns-nobg'>".$nav_prev." / ".$nav_next."</ul>";
+			if ( array_key_exists('ref',$_GET) && sanitize_text_field($_GET['ref']) == 'skill' ) {
+				$tax = 'skill';
+				$ref = "?ref=skill";
+				$adj_posts['prev'] = get_adjacent_post(true,'',false,$tax);
+				$adj_posts['next'] = get_adjacent_post(true,'',true,$tax);
+
+			} else {
+				$ref = "";
+				$adj_posts['prev'] = get_adjacent_post(false,'',false);
+				$adj_posts['next'] = get_adjacent_post(false,'',true);
+			}
+
+			if ( $adj_posts['prev'] != '' || $adj_posts['next'] != '' ) {
+				$post_links = "";
+				foreach ( $adj_posts as $k => $p ) {
+					if ( $p != '' ) {
+						$post_link_url = get_permalink( $p->ID ).$ref; 
+						$post_links[$k] = '<li><a href="'.$post_link_url.'" title="'.$k.'">'.$k.'</a></li>';
+					} else { $post_links[$k] = ""; }
+				}
+				$s_out = "<div class='filter-container'><ul class='filters filter-btns-nobg'>".$post_links['prev']." / ".$post_links['next']."</ul>";
+			} else { $s_out = ""; }
 			$s_out .= "<ul class='filters filter-btns-small'><li><a href='".get_home_url()."'>Home</a></li>";
 			$series = get_the_terms(get_the_ID(),'skill');
 			if ( count($series) >> 0 ) {

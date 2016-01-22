@@ -152,19 +152,19 @@ p {
 }
 .single-project .nav-links .next-project {
 	text-align: right;
-	float: left;
+	float: right;
 }
 .single-project .nav-links .next-project a {
 	/*cursor: e-resize;*/
-	cursor: url("images/arrow-left.png"),auto;
+	cursor: url("images/arrow-right.png"),auto;
 }
 .single-project .nav-links .prev-project {
 	text-align: left;
-	float: right;
+	float: left;
 }
 .single-project .nav-links .prev-project a {
 	/*cursor: w-resize;*/
-	cursor: url("images/arrow-right.png"),auto;
+	cursor: url("images/arrow-left.png"),auto;
 }
  
 /* filters nav buttons */

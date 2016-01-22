@@ -76,14 +76,27 @@ if ( ! function_exists( 'agp_post_nav' ) ) :
 		if ( ! $next && ! $previous ) {
 			return;
 		}
-		?>
+		if ( array_key_exists('ref',$_GET) && sanitize_text_field($_GET['ref']) == 'skill' ) {
+			$tax = 'skill';
+			$ref = "?ref=skill";
+			$adj_posts['prev'] = get_adjacent_post(true,'',false,$tax);
+			$adj_posts['next'] = get_adjacent_post(true,'',true,$tax);
+		} else {
+			$ref = "";
+			$adj_posts['prev'] = get_adjacent_post(false,'',false);
+			$adj_posts['next'] = get_adjacent_post(false,'',true);
+		}
+		$post_links = "";
+		foreach ( $adj_posts as $k => $p ) {
+			if ( $p != '' ) {
+				$post_link_url = get_permalink( $p->ID ).$ref; 
+				$post_links .= '<div class="'.$k.'-project"><a href="'.$post_link_url.'" title="'.$k.'">'.$k.'</a></div>';
+			}
+		} ?>
 		<nav class="navigation post-navigation" role="navigation">
 			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ridge' ); ?></h1>
 			<div class="nav-links">
-				<?php
-					next_post_link( '<div class="next-project"> %link</div>', '&#8594;',true,'','skill' );
-					previous_post_link( '<div class="prev-project">%link</div>', '&#8592;',true,'','skill' );
-				?>
+				<?php echo $post_links; ?>
 			</div><!-- .nav-links -->
 		</nav><!-- .navigation -->
 		<?php
