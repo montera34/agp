@@ -282,10 +282,14 @@ function initSubMenus(){
 	});
 
 	// Don't fire sub menu toggle if a user is trying to click the link
-	jQuery( ".menu-item-has-children a" ).click( function(e) {
+	jQuery( ".menu-item-has-children ul a" ).click( function(e) {
 		e.stopPropagation();
 		return true;
 	});
+}
+function checkActiveElemInSubmenu(){
+	jQuery( ".sub-menu .current-menu-item" ).parent().show();
+	jQuery( ".sub-menu .current-menu-item" ).parents("li.menu-item-has-children").addClass("active-sub-menu");
 }
 
 /**
@@ -314,7 +318,7 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
 
 	// Document loaded
-	
+	checkActiveElemInSubmenu();
 	initSubMenus();
 	jQuery(".content-area").fitVids();
 	

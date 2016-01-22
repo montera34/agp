@@ -27,8 +27,8 @@
 		<?php //edit_post_link( __( 'Edit This Post', 'ridge' ), '<span class="edit-link">', '</span>' ); ?>
 		<?php //ridge_post_nav();
 		// go back buttons
-		$s_out = "<span class='goback'>Volver a</span><ul class='filter-btns-small'><li><a href='".get_home_url()."'>Portada</a></li>
-		<li><a title='Volver al listado de textos' href='".get_home_url()."/textos'>Textos</a></li>
+		$s_out = "<span class='goback'>Volver a / Go back to</span><ul class='filters filter-btns-small'><li><a href='".get_home_url()."'>Home</a></li>
+		<li><a href='".get_home_url()."/textos'>Textos / Texts</a></li>
 		</ul>";
 		echo $s_out; ?>
 	</footer><!-- .entry-footer -->

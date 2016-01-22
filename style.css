@@ -254,8 +254,13 @@ p {
 }
 .filter-btns-small li.filter-next a img {
 	margin: 0 0 0 3px;
-}
+}*/
 .goback {
 	font-size: 11px;
 	text-transform: uppercase;
-}*/
+}
+
+/* main menu */
+.menu-item-has-children::after {
+	font-size: 1.4em;
+}
